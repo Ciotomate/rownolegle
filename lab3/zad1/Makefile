@@ -12,7 +12,7 @@ OPT = -g -DDEBUG
 
 # zaleznosci i komendy
 pthreads_detach_kill: pthreads_detach_kill.o 
-	$(LOADER) $(OPT) pthreads_detach_kill.o -o pthreads_detach_kill -lpthread $(LIB)
+	$(LOADER) $(OPT) pthreads_detach_kill.o -o pthreads_detach_kill -lpthread 
 
 # jak uzyskac plik pthreads_kill_detach.o ?
 pthreads_detach_kill.o: pthreads_detach_kill.c

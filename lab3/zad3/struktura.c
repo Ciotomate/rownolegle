@@ -2,16 +2,14 @@
 #include <stdlib.h>
 #include <pthread.h>
 
-// Struktura do przechowywania danych wejściowych i wyjściowych wątku
 typedef struct {
-    double poczatek;  // Początek fragmentu
-    double koniec;    // Koniec fragmentu
-    double wynik;     // Pole na wynik obliczeń
+    double poczatek;  
+    double koniec;    
+    double wynik;     
 } DaneFragmentu;
 
-// Funkcja wykonywana przez wątek
+
 void* funkcja_watku(void* argument) {
-    // Pobranie argumentu i rzutowanie na odpowiedni typ
     DaneFragmentu* dane = (DaneFragmentu*) argument;
     
     // Obliczanie średniej jako przykład operacji
@@ -24,17 +22,14 @@ void* funkcja_watku(void* argument) {
 }
 
 int main() {
-    // Parametry zadania
-    double a = 0.0, b = 10.0;      // Przedział całkowania
-    int liczba_watkow = 4;         // Liczba wątków
+    double a = 0.0, b = 10.0;      
+    int liczba_watkow = 4;         
 
-    // Tablica wątków
+
     pthread_t watki[liczba_watkow];
 
-    // Tablica struktur do przechowywania danych wejściowych i wyjściowych
     DaneFragmentu fragmenty[liczba_watkow];
 
-    // Obliczenie długości pojedynczego fragmentu
     double dlugosc_fragmentu = (b - a) / liczba_watkow;
 
     // Tworzenie wątków
@@ -51,13 +46,11 @@ int main() {
         pthread_join(watki[i], NULL);
     }
 
-    // Sumowanie wyników
     double suma_wynikow = 0.0;
     for (int i = 0; i < liczba_watkow; i++) {
         suma_wynikow += fragmenty[i].wynik;
     }
 
-    // Wypisanie wyniku końcowego
     printf("Suma wyników: %.2f\n", suma_wynikow);
 
     return 0;
