@@ -1,0 +1,20 @@
+
+CC = gcc
+
+LD = gcc
+
+OPT = -O3
+
+INC = 
+
+LIB = -pthread
+
+
+main.o: main.c
+	$(CC) -c $(OPT) main.c $(INC)
+
+bariera.o: bariera.c
+	$(CC) -c $(OPT) bariera.c $(INC)
+
+clean:
+	rm -f *.o main
